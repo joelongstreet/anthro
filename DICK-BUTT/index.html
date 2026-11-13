@@ -208,7 +208,12 @@
       </footer>
     </main>
 
-    <dialog class="notice" id="translation-notice" aria-labelledby="notice-title">
+    <dialog
+      class="notice"
+      aria-labelledby="notice-title"
+      data-decoding="Decoding Kaeluni…"
+      data-final="Fidelity: 71.4%"
+    >
       <div class="notice-inner">
         <div class="kicker">
           <span>Translator's notice</span>
@@ -229,93 +234,12 @@
         </p>
 
         <div class="notice-foot">
-          <span id="notice-status">Decoding… 0%</span>
-          <button type="button" id="notice-ok" autofocus>OK</button>
+          <span class="notice-status">Decoding… 0%</span>
+          <button type="button" autofocus>OK</button>
         </div>
       </div>
     </dialog>
 
-    <script>
-      (function () {
-        var dialog = document.getElementById("translation-notice");
-        if (!dialog || typeof dialog.showModal !== "function") return;
-
-        var status = document.getElementById("notice-status");
-        var GLYPHS = "⏃⏚☊⎅⟒⎎☌⊑⟟⟊☍⌰⋔⋏⍜⌿⍾⍀⌇⏁⎍⎐⍙⌖⊬⋉";
-        var DURATION = 3200;
-        var reduceMotion =
-          window.matchMedia &&
-          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-        // Wrap each decodable element: hidden final text holds layout,
-        // a live layer shows the glyphs resolving into English.
-        var targets = Array.prototype.map.call(
-          dialog.querySelectorAll("[data-decode]"),
-          function (el) {
-            var text = el.textContent.replace(/\s+/g, " ").trim();
-            el.textContent = "";
-            el.classList.add("decode");
-            var ghost = document.createElement("span");
-            ghost.className = "ghost";
-            ghost.textContent = text;
-            var live = document.createElement("span");
-            live.className = "live";
-            live.setAttribute("aria-hidden", "true");
-            el.appendChild(ghost);
-            el.appendChild(live);
-            return { text: text, live: live };
-          }
-        );
-
-        var total = targets.reduce(function (n, t) {
-          return n + t.text.length;
-        }, 0);
-
-        function glyph() {
-          return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
-        }
-
-        function render(progress) {
-          var revealed = Math.floor(progress * total);
-          targets.forEach(function (t) {
-            var out = "";
-            for (var i = 0; i < t.text.length; i++) {
-              var ch = t.text[i];
-              out += revealed > i || ch === " " ? ch : glyph();
-            }
-            revealed -= t.text.length;
-            t.live.textContent = out;
-          });
-          status.textContent =
-            progress < 1
-              ? "Decoding Kaeluni… " + Math.floor(progress * 100) + "%"
-              : "Fidelity: 71.4%";
-        }
-
-        var start = null;
-        var done = false;
-        function tick(now) {
-          if (done) return;
-          if (start === null) start = now;
-          var p = Math.min(1, (now - start) / DURATION);
-          render(p);
-          if (p < 1) requestAnimationFrame(tick);
-        }
-
-        function finish() {
-          done = true;
-          render(1);
-        }
-
-        document.getElementById("notice-ok").addEventListener("click", function () {
-          dialog.close();
-        });
-        dialog.addEventListener("close", finish);
-
-        dialog.showModal();
-        if (reduceMotion) finish();
-        else requestAnimationFrame(tick);
-      })();
-    </script>
+    <script src="../assets/notice.js"></script>
   </body>
 </html>
