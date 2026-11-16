@@ -56,6 +56,18 @@
         transition: filter 400ms ease;
       }
 
+      @media (max-width: 520px) {
+        .strip {
+          grid-template-columns: 1fr;
+          gap: 8px;
+          border-radius: 0;
+        }
+        .strip img {
+          aspect-ratio: 4 / 5;
+          border-radius: 5px;
+        }
+      }
+
       .work a:hover .strip img,
       .work a:focus-visible .strip img {
         filter: grayscale(0);
