@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Collected Works</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="assets/style.css" />
+    <style>
+      .works {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .work {
+        padding: 26px 0 28px;
+        border-bottom: 1px solid var(--rule);
+      }
+      .works {
+        margin-top: 18px;
+        border-top: 1px solid var(--rule);
+      }
+
+      .work:last-child {
+        border-bottom: 0;
+      }
+
+      .work a {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .strip {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .strip img {
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        display: block;
+        filter: grayscale(0.5);
+        transition: filter 400ms ease;
+      }
+
+      .work a:hover .strip img,
+      .work a:focus-visible .strip img {
+        filter: grayscale(0);
+      }
+
+      .work .kicker {
+        margin-top: 16px;
+      }
+
+      .work h2 {
+        margin: 6px 0 6px;
+        font-size: 24px;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+      }
+
+      .work p {
+        color: var(--muted);
+        margin: 0 0 10px;
+      }
+
+      .more {
+        font-size: 12px;
+        font-weight: 650;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+      .more span {
+        display: inline-block;
+        transition: transform 200ms ease;
+      }
+      .work a:hover .more span {
+        transform: translateX(4px);
+      }
+
+      .work a:focus-visible {
+        outline: 2px solid var(--ink);
+        outline-offset: 6px;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="wrap">
+      <header>
+        <div class="kicker">Index of works</div>
+        <h1>Collected Works</h1>
+        <div class="latin">
+          Objects, and the records that came with them.
+        </div>
+      </header>
+
+      <ul class="works">
+        <li class="work">
+          <a href="CACTUS/">
+            <div class="strip">
+              <img src="assets/home/cactus_1.webp" alt="Mentor cactus, mature form" loading="lazy" />
+              <img src="assets/home/cactus_2.webp" alt="Rib detail of the cactus" loading="lazy" />
+              <img src="assets/home/cactus_3.webp" alt="Ribbed cultivation vessel" loading="lazy" />
+            </div>
+            <div class="kicker">Specimen record · Kaelune-7</div>
+            <h2>Mentor Cactus</h2>
+            <p>
+              A paired cactus from a distant basalt plain, given as thanks to
+              the people who raise others well.
+            </p>
+            <div class="more">View record <span>→</span></div>
+          </a>
+        </li>
+
+        <li class="work">
+          <a href="DICK-BUTT/">
+            <div class="strip">
+              <img src="assets/home/dick_butt_1.webp" alt="Carved stone relief lit among moss" loading="lazy" />
+              <img src="assets/home/dick_butt_2.webp" alt="Relief stone set in a gold planter" loading="lazy" />
+              <img src="assets/home/dick_butt_3.webp" alt="Finished piece with its archive tag" loading="lazy" />
+            </div>
+            <div class="kicker">Archival record · Earth</div>
+            <h2>Fossilized Relief</h2>
+            <p>
+              A relic of Earth's Late Digital Period, studied by archivists who
+              never quite worked out why it mattered.
+            </p>
+            <div class="more">View record <span>→</span></div>
+          </a>
+        </li>
+
+        <li class="work">
+          <a href="EOJ/">
+            <div class="strip">
+              <img src="assets/home/eoj_1.webp" alt="Framed E.O.J. hanging on a wall" loading="lazy" />
+              <img src="assets/home/eoj_2.webp" alt="Side view of the frame" loading="lazy" />
+              <img src="assets/home/eoj_3.webp" alt="Three finished frames on a workbench" loading="lazy" />
+            </div>
+            <div class="kicker">Family record</div>
+            <h2>E.O.J.</h2>
+            <p>
+              An imaginary friend, a drawing that fixed a heart, and a frame
+              made from my dad's old desk.
+            </p>
+            <div class="more">Read the story <span>→</span></div>
+          </a>
+        </li>
+      </ul>
+
+      <footer>
+        <div>a.joelongstreet.com</div>
+      </footer>
+    </main>
+  </body>
+</html>
